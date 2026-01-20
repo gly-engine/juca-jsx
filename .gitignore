@@ -1,0 +1,8 @@
+*.db
+*.lock
+*-lock.*
+*.lua
+*.d.ts
+dist/
+game/
+node_modules/

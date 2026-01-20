@@ -1,0 +1,30 @@
+{
+  "name": "@gamely/juca-jsx",
+  "version": "0.0.1",
+  "type": "module",
+  "repository": "https://github.com/gly-engine/juca-jsx",
+  "bugs": "https://github.com/gly-engine/juca-jsx/issues",
+  "scripts": {
+    "build": "tstl --declaration && npm run build:game",
+    "build:game": "gly-cli build-ginga --enterprise --target ncl --bundler --cwd dist index.lua --outdir game",
+    "lint:fix": "eslint . --fix",
+    "lint": "eslint .",
+    "format:fix": "prettier --write .",
+    "format": "prettier --check ."
+  },
+  "dependencies": {
+    "@gamely/gly-cli": "^0.3.8",
+    "@gamely/acai-jsx": "^0.0.3"
+  },
+  "devDependencies": {
+    "@gamely/gly-jsx": "^0.2.3",
+    "@gamely/gly-types": "^0.2.4",
+    "@gamely/tstl-console": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "@typescript-eslint/parser": "^8.39.1",
+    "eslint": "^9.33.0",
+    "typescript-eslint": "^8.39.1",
+    "typescript-to-lua": "^1.31.2",
+    "prettier": "^3.6.2"
+  }
+}
