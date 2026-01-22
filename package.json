@@ -6,7 +6,7 @@
   "bugs": "https://github.com/gly-engine/juca-jsx/issues",
   "scripts": {
     "build": "tstl --declaration && npm run build:game",
-    "build:game": "gly-cli build-ginga --enterprise --target ncl --bundler --cwd dist index.lua --outdir game",
+    "build:game": "gly-cli build-ginga --enterprise --target ncl --cwd dist index.lua --bundler --outdir build/dist --non-relative && cp -r assets build/dist/",
     "lint:fix": "eslint . --fix",
     "lint": "eslint .",
     "format:fix": "prettier --write .",
@@ -14,10 +14,12 @@
   },
   "dependencies": {
     "@gamely/gly-cli": "^0.3.8",
+    "@gamely/gly-engine": "0.3.8",
+    "@gamely/tstl-import": "0.0.3",
     "@gamely/acai-jsx": "^0.0.3"
   },
   "devDependencies": {
-    "@gamely/gly-jsx": "^0.2.3",
+    "@gamely/gly-jsx": "^0.3.0",
     "@gamely/gly-types": "^0.2.4",
     "@gamely/tstl-console": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^8.39.1",

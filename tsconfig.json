@@ -7,10 +7,7 @@
     "outDir": "dist",
     "jsx": "react",
     "jsxFactory": "std.h",
-    "types": [
-      "@gamely/gly-jsx",
-      "@gamely/tstl-console"
-    ],
+    "types": ["@gamely/gly-jsx", "@gamely/tstl-console"],
     "strict": true
   },
   "tstl": {
@@ -22,6 +19,7 @@
     "noHeader": true,
     "luaPlugins": [
       { "name": "@gamely/tstl-console/gly" },
+      { "name": "@gamely/tstl-import" }
     ]
   }
 }
