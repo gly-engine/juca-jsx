@@ -1,8 +1,8 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
-import { Button, AcaiButtonProperties } from "./index";
+import { Button, JucaButtonProperties } from "./index";
 import { getSecondaryColor } from "../../theme";
 
-export type SkeletonButtonProperties = AcaiButtonProperties;
+export type SkeletonButtonProperties = JucaButtonProperties;
 
 export function SkeletonButton(props: SkeletonButtonProperties, std: GlyStd) {
   const border_radius = props.border_radius ?? 0;
@@ -51,11 +51,12 @@ export function SkeletonButton(props: SkeletonButtonProperties, std: GlyStd) {
           const progress = (std.milis % cycle) / cycle;
           const wave = 1 - std.math.abs(1 - 2 * progress);
 
-          const travel = btnWidth*2;
-          const shimmerX = xPos - btnWidth + travel * wave;
+          const scaledBtnWidth = btnWidth * 1.5;
+          const travel = btnWidth + scaledBtnWidth;
+          const shimmerX = xPos - scaledBtnWidth + travel * wave;
 
             const shimmerStart = shimmerX;
-            const shimmerEnd = shimmerX + btnWidth;
+            const shimmerEnd = shimmerX + scaledBtnWidth;
             const clipStart = xPos;
             const clipEnd = xPos + btnWidth;
             const drawStart = Math.max(shimmerStart, clipStart);

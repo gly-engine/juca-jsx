@@ -1,8 +1,8 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
-import { Button, AcaiButtonProperties } from "./index";
+import { Button, JucaButtonProperties } from "./index";
 import { getPrimaryColor, getDangerColor } from "../../theme";
 
-export type AnimatedButtonProperties = AcaiButtonProperties;
+export type AnimatedButtonProperties = JucaButtonProperties;
 
 export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
   const border_radius = props.border_radius ?? 0;

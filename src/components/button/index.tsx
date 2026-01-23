@@ -2,7 +2,7 @@ import type { GlyStd, GlyApp } from "@gamely/gly-types";
 import { Text, AcaiTextProperties } from "@gamely/acai-jsx/basics/text";
 import { getContrastColor, getDangerColor, getPrimaryColor } from "../../theme";
 
-export type AcaiButtonProperties = {
+export type JucaButtonProperties = {
   width?: number | (() => number);
   height?: number | (() => number);
   background_color?: number | (() => number);
@@ -22,7 +22,7 @@ export type AcaiButtonProperties = {
     kind?: "default" | "tertiary" | "danger" | "danger_tertiary";
   };
 
-export function Button(props: AcaiButtonProperties, std: GlyStd) {
+export function Button(props: JucaButtonProperties, std: GlyStd) {
   const border_width = props.border_width ?? 1;
   const border_radius = props.border_radius ?? 0;
   const x_pos = props.x ?? 0;
