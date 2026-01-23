@@ -35,40 +35,42 @@ export function SkeletonButton(props: SkeletonButtonProperties, std: GlyStd) {
       offset={props.offset}
       span={props.span ?? 1}
     >
-      <node
-        load={() => <Button border_width={0} {...props} />}
-        post_draw={(self: GlyApp["data"]) => {
-          const btnWidth = getWidth ? getWidth() : self.width;
-          const btnHeight = getHeight ? getHeight() : self.height;
-          const radius = getBorderRadius();
+      <node>
+        <Button border_width={0} {...props} />
+        <node
+          draw={(self: GlyApp["data"]) => {
+            const btnWidth = getWidth ? getWidth() : self.width;
+            const btnHeight = getHeight ? getHeight() : self.height;
+            const radius = getBorderRadius();
 
-          const xPos =
-            props.x !== undefined ? getX() : (self.width - btnWidth) / 2;
-          const yPos =
-            props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
+            const xPos =
+              props.x !== undefined ? getX() : (self.width - btnWidth) / 2;
+            const yPos =
+              props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
 
-          const cycle = 3000;
-          const progress = (std.milis % cycle) / cycle;
-          const wave = 1 - std.math.abs(1 - 2 * progress);
+            const cycle = 3000;
+            const progress = (std.milis % cycle) / cycle;
+            const wave = 1 - std.math.abs(1 - 2 * progress);
 
-          const scaledBtnWidth = btnWidth * 1.5;
-          const travel = btnWidth + scaledBtnWidth;
-          const shimmerX = xPos - scaledBtnWidth + travel * wave;
+            const scaledBtnWidth = btnWidth * 1.5;
+            const travel = btnWidth + scaledBtnWidth;
+            const shimmerX = xPos - scaledBtnWidth + travel * wave;
 
-            const shimmerStart = shimmerX;
-            const shimmerEnd = shimmerX + scaledBtnWidth;
-            const clipStart = xPos;
-            const clipEnd = xPos + btnWidth;
-            const drawStart = Math.max(shimmerStart, clipStart);
-            const drawEnd = Math.min(shimmerEnd, clipEnd);
-            const drawWidth = drawEnd - drawStart;
+              const shimmerStart = shimmerX;
+              const shimmerEnd = shimmerX + scaledBtnWidth;
+              const clipStart = xPos;
+              const clipEnd = xPos + btnWidth;
+              const drawStart = Math.max(shimmerStart, clipStart);
+              const drawEnd = Math.min(shimmerEnd, clipEnd);
+              const drawWidth = drawEnd - drawStart;
 
-            if (drawWidth > 0) {
-              std.draw.color(getSecondaryColor());
-              std.draw.rect2(0, drawStart, yPos, drawWidth, btnHeight, radius);
-            }
-        }}
-      />
+              if (drawWidth > 0) {
+                std.draw.color(getSecondaryColor());
+                std.draw.rect2(0, drawStart, yPos, drawWidth, btnHeight, radius);
+              }
+          }}
+        />
+      </node>
     </item>
   );
 }

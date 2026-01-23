@@ -47,39 +47,40 @@ export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
       offset={props.offset}
       span={props.span ?? 1}
     >
-      <node
-        load={() => <Button border_width={0} {...props} />}
-        draw={(self: GlyApp["data"]) => {
-          const btnWidth = getWidth ? getWidth() : self.width;
-          const btnHeight = getHeight ? getHeight() : self.height;
-          const radius = getBorderRadius();
+      <node>
+        <node
+          draw={(self: GlyApp["data"]) => {
+            const btnWidth = getWidth ? getWidth() : self.width;
+            const btnHeight = getHeight ? getHeight() : self.height;
+            const radius = getBorderRadius();
 
-          const xPos =
-            props.x !== undefined ? getX() : (self.width - btnWidth) / 2;
-          const yPos =
-            props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
+            const xPos =
+              props.x !== undefined ? getX() : (self.width - btnWidth) / 2;
+            const yPos =
+              props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
 
-          const cycle = 1750;
-          const progress = (std.milis % cycle) / cycle;
-          const pulseOffset = std.math.sin(progress * Math.PI * 2) * 2;
-          const offset = std.math.abs(pulseOffset);
+            const cycle = 1750;
+            const progress = (std.milis % cycle) / cycle;
+            const pulseOffset = std.math.sin(progress * Math.PI * 2) * 2;
+            const offset = std.math.abs(pulseOffset);
 
-          const animatedWidth = btnWidth + offset * 2;
-          const animatedHeight = btnHeight + offset * 2;
-          const animatedX = xPos - offset;
-          const animatedY = yPos - offset;
+            const animatedWidth = btnWidth + offset * 2;
+            const animatedHeight = btnHeight + offset * 2;
+            const animatedX = xPos - offset;
+            const animatedY = yPos - offset;
 
-          std.draw.color(getBgColor());
-          std.draw.rect2(
-            fill,
-            animatedX,
-            animatedY,
-            animatedWidth,
-            animatedHeight,
-            radius,
-          );
-        }}
-      />
+            std.draw.color(getBgColor());
+            std.draw.rect2(
+              fill,
+              animatedX,
+              animatedY,
+              animatedWidth,
+              animatedHeight,
+              radius,
+            );
+          }}/>
+        <Button border_width={0} {...props} />
+      </node>
     </item>
   );
 }

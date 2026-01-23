@@ -76,29 +76,19 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
     <item
       style={props.style}
       offset={props.offset}
-      span={props.span ?? 1}
-    >
-      <node
-        load={() => (
-          <Text
-            content={content}
-            color={props.color}
-            font_size={props.font_size}
-            font_name={props.font_name}
-            align={props.align}
-            valign={props.valign}
-          />
-        )}
-        draw={(self: GlyApp["data"]) => {
+      span={props.span ?? 1}>
+      <node>
+        <node 
+          draw={(self: GlyApp["data"]) => {
           const btnWidth = getWidth ? getWidth() : self.width;
           const btnHeight = getHeight ? getHeight() : self.height;
           const radius = getBorderRadius();
-
+          
           const xPos =
             props.x !== undefined ? getX() : (self.width - btnWidth) / 2;
           const yPos =
-            props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
-
+          props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
+          
           std.draw.color(getBgColor());
           std.draw.rect2(fill, xPos, yPos, btnWidth, btnHeight, radius);
 
@@ -117,7 +107,16 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
             }
           }
         }}
-      />
+        />
+        <Text
+          content={content}
+          color={props.color}
+          font_size={props.font_size}
+          font_name={props.font_name}
+          align={props.align}
+          valign={props.valign}
+        />
+      </node>
     </item>
   );
 }
