@@ -1,6 +1,6 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
 import { Text, AcaiTextProperties } from "@gamely/acai-jsx/basics/text";
-import { getContrastColor, getDangerColor, getPrimaryColor } from "../../theme";
+import { getContrastColor, getDangerColor, getPrimaryColor, getSecondaryColor } from "../../theme";
 
 export type JucaButtonProperties = {
   width?: number | (() => number);
@@ -9,6 +9,7 @@ export type JucaButtonProperties = {
   border_color?: number | (() => number);
   border_width?: number | (() => number);
   border_radius?: number | (() => number);
+  on_hover?: boolean | (() => boolean);
   x?: number | (() => number);
   y?: number | (() => number);
 } & Pick<
@@ -31,6 +32,7 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
   const btn_height = props.height;
   const content = props.content ?? "";
   const kind = props.kind ?? "default";
+  const on_hover = props.on_hover ?? false;
 
   let bg_color = props.background_color ?? getPrimaryColor;
   let border_color = props.border_color ?? getContrastColor;
@@ -46,13 +48,6 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
     fill = 1;
   }
 
-  const getBgColor = typeof bg_color !== "function" ? () => bg_color : bg_color;
-  const getBorderColor =
-    border_color !== undefined
-      ? typeof border_color !== "function"
-        ? () => border_color
-        : border_color
-      : undefined;
   const getBorderWidth =
     typeof border_width !== "function" ? () => border_width : border_width;
   const getBorderRadius =
@@ -71,6 +66,19 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
         ? () => btn_height
         : btn_height
       : undefined;
+  const getOnHover = typeof on_hover !== "function" ? () => on_hover : on_hover;
+
+  const baseBgColor: () => number =
+    typeof bg_color === "function" ? bg_color : () => bg_color;
+
+  const baseBorderColor: () => number =
+    typeof border_color === "function" ? border_color : () => border_color;
+
+  const getBgColor = () =>
+    getOnHover() ? getSecondaryColor() : baseBgColor();
+
+  const getBorderColor = () =>
+    getOnHover() ? getPrimaryColor() : baseBorderColor();
 
   return (
     <item
@@ -80,20 +88,20 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
       <node>
         <node 
           draw={(self: GlyApp["data"]) => {
-          const btnWidth = getWidth ? getWidth() : self.width;
-          const btnHeight = getHeight ? getHeight() : self.height;
-          const radius = getBorderRadius();
-          
-          const xPos =
-            props.x !== undefined ? getX() : (self.width - btnWidth) / 2;
-          const yPos =
-          props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
-          
-          std.draw.color(getBgColor());
-          std.draw.rect2(fill, xPos, yPos, btnWidth, btnHeight, radius);
+            const btnWidth = getWidth ? getWidth() : self.width;
+            const btnHeight = getHeight ? getHeight() : self.height;
+            const radius = getBorderRadius();
+            
+            const xPos =
+              props.x !== undefined ? getX() : (self.width - btnWidth) / 2;
+            const yPos =
+            props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
+            
+            std.draw.color(getBgColor());
+            std.draw.rect2(fill, xPos, yPos, btnWidth, btnHeight, radius);
 
-          if (getBorderColor) {
-            std.draw.color(getBorderColor());
+            const borderColor = getBorderColor();
+            std.draw.color(borderColor);
             const bw = getBorderWidth();
             for (let i = 0; i < bw; i++) {
               std.draw.rect2(
@@ -106,7 +114,7 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
               );
             }
           }
-        }}
+        }
         />
         <Text
           content={content}
