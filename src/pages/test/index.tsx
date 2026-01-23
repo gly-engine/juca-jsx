@@ -8,65 +8,74 @@ import {
 import { AnimatedButton } from "../../components/button/animated";
 import { SkeletonButton } from "../../components/button/skeleton";
 import { IconButton } from "../../components/button/icon";
+import { Card } from "../../components/card";
+import { createState, TextBlock } from "@gamely/acai-jsx/index";
+
+const [hover, setHover] = createState(false);
 
 export function TestPage(props: any, std: GlyStd): JSX.Element {
   <style class="margin" top={10} bottom={10} left={30} right={30} />;
 
-  return ( 
-    <node
-      load={() => (
-        <grid class="3x1">
-          <grid class="1x8">
-              <Button
-                style="margin"
-                offset={2}
-                content="teste 1"
-                color={getTextColor}
-              />
-              <Button
-                style="margin"
-                content="teste 2"
-                kind="danger"
-                color={getTextColor}
-              />
-              <Button
-                style="margin"
-                content="teste 3"
-                kind="danger_tertiary"
-                color={getTextColor}
-              />
-              <SkeletonButton
-                style="margin"
-                color={getTextColor}
-              />
-              <AnimatedButton
-                style="margin"
-                kind="tertiary"
-                content="teste 4"
-                color={getTextColor}
-              />
-          </grid>
-          <grid class="1x2">
-            <IconButton
-              style="margin"
-              src="assets/teste.png"
+  return (
+    <node>
+      <node 
+        key={() => {
+          if (std.key.press.a) {
+            changeTheme("dark");
+          }
+          setHover(true);
+        }}
+        draw={() => {
+          std.draw.clear(getTertiaryColor());
+        }}
+      />
+      <grid class="3x1">
+        <grid class="1x8">
+            <Button
+              offset={2}
+              content="teste 1"
+              color={getTextColor}
+              on_hover={hover}
             />
-            <IconButton
-              style="margin"
-              src="assets/teste.png"
+            <Button
+              content="teste 2"
+              kind="danger"
+              color={getTextColor}
             />
-          </grid>
-        </grid> 
-      )
-    }
-    key={() => (
-        changeTheme("dark")
-      )
-    }
-    draw={() => (
-        std.draw.clear(getTertiaryColor())
-      )
-    }
-    />
+            <Button
+              content="teste 3"
+              kind="danger_tertiary"
+              color={getTextColor}
+            />
+            <SkeletonButton
+              color={getTextColor}
+            />
+            <AnimatedButton
+              kind="tertiary"
+              content="teste 4"
+              color={getTextColor}
+            />
+        </grid>
+        <grid class="1x2">
+          <IconButton
+            src="assets/teste.png"
+          />
+          <IconButton
+            src="assets/teste.png"
+          />
+        </grid>
+        <grid class="1x8">
+          <Card
+          src="assets/teste.png"
+          title="Card Title"
+          description="This is a card component, lorem ipsum dolor sit amet. This is a card component, lorem ipsum dolor sit amet."
+          align={"center"}
+          valign={"middle"}
+          />
+          <TextBlock content="This is a card component, lorem ipsum dolor sit amet. This is a card component, lorem ipsum dolor sit amet."
+          />
+        </grid>
+      </grid>
+    </node>
   );
 }
