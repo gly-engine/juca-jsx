@@ -1,15 +1,15 @@
 import { GlyApp, GlyStd } from "@gamely/gly-types";
 import { Button, JucaButtonProperties } from "../button";
-import { AcaiTextBlockProperties, Text, TextBlock } from "@gamely/acai-jsx/basics/text";
+import { AcaiTextProperties, Text } from "@gamely/acai-jsx/basics/text";
 import { Icon, JucaIconProperties } from "../icon";
 
 export type JucaCardProperties = JucaButtonProperties 
   & JucaIconProperties & {
-    title?: AcaiTextBlockProperties["content"];
-    description?: AcaiTextBlockProperties["content"];
+    title?: AcaiTextProperties["content"];
+    description?: AcaiTextProperties["content"];
   }
   & Pick<
-  AcaiTextBlockProperties,
+  AcaiTextProperties,
   "content" | "color" | "font_size" | "font_name" | "align" | "valign"
 > & {
   span?: number;
@@ -26,15 +26,14 @@ export function Card(props: JucaCardProperties, std: GlyStd) {
     <item
       style={props.style}
       offset={props.offset}
-      span={props.span ?? 1}
-    >
+      span={props.span ?? 1}>
       <node>
         <Button {...props}></Button>
         <grid class="3x1">
           <Icon src={props.src}></Icon>
           <grid class="1x3" span={2}>
-            <TextBlock content={title} {...props}></TextBlock>
-            <TextBlock span={2} content={description} {...props}></TextBlock>
+            <Text content={title} {...props}></Text>
+            <Text span={2} content={description} {...props}></Text>
           </grid>
         </grid>
       </node>
