@@ -9,7 +9,8 @@ import { AnimatedButton } from "../../components/button/animated";
 import { SkeletonButton } from "../../components/button/skeleton";
 import { IconButton } from "../../components/button/icon";
 import { Card } from "../../components/card";
-import { createState, TextBlock } from "@gamely/acai-jsx/index";
+import { createState, Text, TextBlock } from "@gamely/acai-jsx/index";
+import { Icon } from "../../components/icon";
 
 const [hover, setHover] = createState(false);
 
@@ -65,15 +66,12 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
           />
         </grid>
         <grid class="1x8">
-          <Card
-          src="assets/teste.png"
-          title="Card Title"
-          description="This is a card component, lorem ipsum dolor sit amet. This is a card component, lorem ipsum dolor sit amet."
-          align={"center"}
-          valign={"middle"}
-          />
-          <TextBlock content="This is a card component, lorem ipsum dolor sit amet. This is a card component, lorem ipsum dolor sit amet."
-          />
+          <Card>
+            <Button border_radius={10}/>
+            <Icon src="assets/teste.png"></Icon>
+            <Text content="Card Title" color={getTextColor} align={"left"}></Text>
+            <TextBlock span={2} align={"justify"} content="This is a card component, lorem ipsum dolor sit amet. This is a card component, lorem ipsum dolor sit amet."></TextBlock>
+          </Card>
         </grid>
       </grid>
     </node>

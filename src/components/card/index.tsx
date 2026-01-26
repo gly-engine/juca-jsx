@@ -1,26 +1,15 @@
-import { GlyApp, GlyStd } from "@gamely/gly-types";
-import { Button, JucaButtonProperties } from "../button";
-import { AcaiTextProperties, Text } from "@gamely/acai-jsx/basics/text";
-import { Icon, JucaIconProperties } from "../icon";
+import { GlyStd } from "@gamely/gly-types";
 
-export type JucaCardProperties = JucaButtonProperties 
-  & JucaIconProperties & {
-    title?: AcaiTextProperties["content"];
-    description?: AcaiTextProperties["content"];
-  }
-  & Pick<
-  AcaiTextProperties,
-  "content" | "color" | "font_size" | "font_name" | "align" | "valign"
-> & {
+export type JucaCardProperties = {
   span?: number;
   offset?: number;
   after?: number;
   style?: string;
+  children: [JSX.Element, JSX.Element, JSX.Element, JSX.Element];
 };
 
 export function Card(props: JucaCardProperties, std: GlyStd) {
-  const title = props.title ?? "";
-  const description = props.description ?? "";
+  const [button, icon, title, description] = props.children;
 
   return (
     <item
@@ -28,12 +17,12 @@ export function Card(props: JucaCardProperties, std: GlyStd) {
       offset={props.offset}
       span={props.span ?? 1}>
       <node>
-        <Button {...props}></Button>
+        {button}
         <grid class="3x1">
-          <Icon src={props.src}></Icon>
+          {icon}
           <grid class="1x3" span={2}>
-            <Text content={title} {...props}></Text>
-            <Text span={2} content={description} {...props}></Text>
+            {title}
+            {description}
           </grid>
         </grid>
       </node>
