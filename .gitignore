@@ -4,5 +4,6 @@
 *.lua
 *.d.ts
 dist/
+build/
 game/
 node_modules/
