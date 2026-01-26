@@ -21,6 +21,13 @@ function load(props: never, std: GlyStd) {
   std.node.spawn(std.node.load(TestPage({}, std)));
 }
 
+function error(_: never, std: GlyStd, msg: string) {
+	console.error(msg);
+	return true;
+}
+
+
 export const callbacks = {
   load,
+  error,
 };
