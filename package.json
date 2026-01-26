@@ -5,8 +5,10 @@
   "repository": "https://github.com/gly-engine/juca-jsx",
   "bugs": "https://github.com/gly-engine/juca-jsx/issues",
   "scripts": {
-    "build": "tstl --declaration && npm run build:game",
-    "build:game": "gly-cli build-ginga --enterprise --target ncl --cwd dist index.lua --bundler --outdir build/dist --non-relative && cp -r assets build/dist/",
+    "prebuild": "tstl --declaration",
+    "build": "gly-cli build-ginga --enterprise --target ncl --cwd dist index.lua --bundler --outdir build/dist --non-relative && cp -r assets build/dist/",
+    "build:html": "npm run build",
+    "postbuild:html": "gly-cli build-html build/dist/game.lua --outdir build/html --aa --enginecdn --fengari --screen 1280x720",
     "lint:fix": "eslint . --fix",
     "lint": "eslint .",
     "format:fix": "prettier --write .",
