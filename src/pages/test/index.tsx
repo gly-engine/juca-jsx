@@ -33,25 +33,30 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
       <grid class="3x1">
         <grid class="1x8">
             <Button
+              style="margin"
               offset={2}
               content="teste 1"
               color={getTextColor}
               on_hover={hover}
             />
             <Button
+              style="margin"
               content="teste 2"
               kind="danger"
               color={getTextColor}
             />
             <Button
+              style="margin"
               content="teste 3"
               kind="danger_tertiary"
               color={getTextColor}
             />
             <SkeletonButton
+              style="margin"
               color={getTextColor}
             />
             <AnimatedButton
+              style="margin"
               kind="tertiary"
               content="teste 4"
               color={getTextColor}
@@ -59,19 +64,22 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
         </grid>
         <grid class="1x2">
           <IconButton
+            style="margin"
             src="assets/teste.png"
           />
           <IconButton
+            style="margin"
             src="assets/teste.png"
           />
         </grid>
         <grid class="1x8">
-          <Card>
-            <Button border_radius={10}/>
-            <Icon src="assets/teste.png"></Icon>
-            <Text content="Card Title" color={getTextColor} align={"left"}></Text>
-            <TextBlock span={2} align={"justify"} content="This is a card component, lorem ipsum dolor sit amet. This is a card component, lorem ipsum dolor sit amet."></TextBlock>
-          </Card>
+          <Card
+            icon_src="assets/teste.png"
+            title_content="Video, olá"
+            title_align={"left"}
+            description_content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
+            description_align={"left"}
+          />
         </grid>
       </grid>
     </node>
