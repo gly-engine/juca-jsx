@@ -1,8 +1,12 @@
 {
-  "name": "@gamely/juca-jsx",
+  "name": "@gly-juca/juca-jsx",
   "version": "0.0.1",
   "type": "module",
-  "repository": "https://github.com/gly-engine/juca-jsx",
+  "description": "JSX UI Components for apps",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gly-engine/juca-jsx.git"
+  },
   "bugs": "https://github.com/gly-engine/juca-jsx/issues",
   "scripts": {
     "prebuild": "tstl --declaration",
