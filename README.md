@@ -1,6 +1,6 @@
 # JUCA
 
-JSX UI Components for aAps
+JSX UI Components for Apps
 ## Usage
 
 ### Button Component
