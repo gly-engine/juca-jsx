@@ -1,10 +1,6 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
-import { Text, AcaiTextProperties } from "@gamely/acai-jsx/basics/text";
+import { Text } from "@gamely/acai-jsx/index";
 import { getContrastColor, getDangerColor, getPrimaryColor, getSecondaryColor } from "../../theme";
-
-export { AnimatedButton } from "./animated";
-export { SkeletonButton } from "./skeleton";
-export { IconButton } from "./icon";
 
 export type JucaButtonProperties = {
   width?: number | (() => number);
@@ -16,10 +12,7 @@ export type JucaButtonProperties = {
   on_hover?: boolean | (() => boolean);
   x?: number | (() => number);
   y?: number | (() => number);
-} & Pick<
-  AcaiTextProperties,
-  "content" | "color" | "font_size" | "font_name" | "align" | "valign"
-> & {
+} & Partial<Parameters<typeof Text>[0]> & {
     span?: number;
     offset?: number;
     after?: number;
