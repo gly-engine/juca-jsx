@@ -1,6 +1,6 @@
 {
   "name": "@gly-juca/juca-jsx",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "description": "JSX UI Components for apps",
   "repository": {
