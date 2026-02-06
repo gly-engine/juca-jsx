@@ -9,7 +9,7 @@ import { AnimatedButton } from "../../components/button/animated";
 import { SkeletonButton } from "../../components/button/skeleton";
 import { IconButton } from "../../components/button/icon";
 import { Card } from "../../components/card";
-import { createState } from "@gamely/acai-jsx/index";
+import { createState } from "@gamely/acai-jsx/hooks/index";
 
 const [hover, setHover] = createState(false);
 

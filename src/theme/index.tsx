@@ -1,5 +1,5 @@
 import { GlyStd } from "@gamely/gly-types";
-import { createState } from "@gamely/acai-jsx/index";
+import { createState } from "@gamely/acai-jsx/hooks/index";
 
 export type ThemeName = "dark" | "light" | "purple";
 

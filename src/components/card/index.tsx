@@ -1,7 +1,7 @@
 import { GlyStd } from "@gamely/gly-types";
 import { Button } from "../button";
 import { Icon } from "../icon";
-import { Text, TextBlock } from "@gamely/acai-jsx/index";
+import { Text, TextBlock } from "@gamely/acai-jsx/basics/text";
 
 export type JucaCardProperties = {
   span?: number;

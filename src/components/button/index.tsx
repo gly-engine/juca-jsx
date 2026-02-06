@@ -1,5 +1,5 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
-import { Text } from "@gamely/acai-jsx/index";
+import { Text } from "@gamely/acai-jsx/basics/text";
 import { getContrastColor, getDangerColor, getPrimaryColor, getSecondaryColor } from "../../theme";
 
 export type JucaButtonProperties = {
