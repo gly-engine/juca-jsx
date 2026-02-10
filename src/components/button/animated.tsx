@@ -11,10 +11,10 @@ export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
   const btn_width = props.width;
   const btn_height = props.height;
   const kind = props.kind ?? "default";
-  
+
   let bg_color = props.background_color ?? getPrimaryColor;
   let fill = 0;
-  
+
   if (kind === "danger" || kind === "danger_tertiary") {
     bg_color = getDangerColor;
   }
@@ -42,11 +42,7 @@ export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
       : undefined;
 
   return (
-    <item
-      style={props.style}
-      offset={props.offset}
-      span={props.span ?? 1}
-    >
+    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
       <node>
         <node
           draw={(self: GlyApp["data"]) => {
@@ -78,7 +74,8 @@ export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
               animatedHeight,
               radius,
             );
-          }}/>
+          }}
+        />
         <Button border_width={0} {...props} />
       </node>
     </item>

@@ -54,7 +54,7 @@ export function initTheme(std: GlyStd) {
     purple: {
       name: "purple",
       primary_color: 0x8128f8ff,
-      secondary_color: 0x661ACCff,
+      secondary_color: 0x661accff,
       tertiary_color: 0x362e39ff,
       contrast_color: 0x6e6871ff,
       danger_color: 0xdb6f6fff,

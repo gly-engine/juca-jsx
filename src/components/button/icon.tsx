@@ -16,14 +16,10 @@ export function IconButton(props: IconButtonProperties, std: GlyStd) {
   const src = props.src;
 
   return (
-    <item
-      style={props.style}
-      offset={props.offset}
-      span={props.span ?? 1}
-    >
+    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
       <node>
-          <Button border_width={0} {...props} />
-          <Icon src={src} position={icon_position} />
+        <Button border_width={0} {...props} />
+        <Icon src={src} position={icon_position} />
       </node>
     </item>
   );

@@ -1,6 +1,11 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
 import { Text } from "@gamely/acai-jsx/basics/text";
-import { getContrastColor, getDangerColor, getPrimaryColor, getSecondaryColor } from "../../theme";
+import {
+  getContrastColor,
+  getDangerColor,
+  getPrimaryColor,
+  getSecondaryColor,
+} from "../../theme";
 
 export type JucaButtonProperties = {
   width?: number | (() => number);
@@ -71,29 +76,25 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
   const baseBorderColor: () => number =
     typeof border_color === "function" ? border_color : () => border_color;
 
-  const getBgColor = () =>
-    getOnHover() ? getSecondaryColor() : baseBgColor();
+  const getBgColor = () => (getOnHover() ? getSecondaryColor() : baseBgColor());
 
   const getBorderColor = () =>
     getOnHover() ? getPrimaryColor() : baseBorderColor();
 
   return (
-    <item
-      style={props.style}
-      offset={props.offset}
-      span={props.span ?? 1}>
+    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
       <node>
-        <node 
+        <node
           draw={(self: GlyApp["data"]) => {
             const btnWidth = getWidth ? getWidth() : self.width;
             const btnHeight = getHeight ? getHeight() : self.height;
             const radius = getBorderRadius();
-            
+
             const xPos =
               props.x !== undefined ? getX() : (self.width - btnWidth) / 2;
             const yPos =
-            props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
-            
+              props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
+
             std.draw.color(getBgColor());
             std.draw.rect2(fill, xPos, yPos, btnWidth, btnHeight, radius);
 
@@ -110,8 +111,7 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
                 radius,
               );
             }
-          }
-        }
+          }}
         />
         <Text
           content={content}

@@ -14,26 +14,39 @@ export type JucaCardProperties = {
   title_content: string | (() => string);
   title_color?: number | (() => number);
   title_font_size?: number | (() => number);
-  title_align?: "left" | "center" | "right" | (() => "left" | "center" | "right");
-  title_valign?: "top" | "middle" | "bottom" | (() => "top" | "middle" | "bottom");
-  
+  title_align?:
+    | "left"
+    | "center"
+    | "right"
+    | (() => "left" | "center" | "right");
+  title_valign?:
+    | "top"
+    | "middle"
+    | "bottom"
+    | (() => "top" | "middle" | "bottom");
+
   description_content: string | (() => string);
   description_color?: number | (() => number);
   description_font_size?: number | (() => number);
-  description_align?: "left" | "center" | "right" | (() => "left" | "center" | "right");
-  description_valign?: "top" | "middle" | "bottom" | (() => "top" | "middle" | "bottom");
+  description_align?:
+    | "left"
+    | "center"
+    | "right"
+    | (() => "left" | "center" | "right");
+  description_valign?:
+    | "top"
+    | "middle"
+    | "bottom"
+    | (() => "top" | "middle" | "bottom");
 };
 
 export function Card(props: JucaCardProperties, std: GlyStd) {
   return (
-    <item
-      style={props.style}
-      offset={props.offset}
-      span={props.span ?? 1}>
+    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
       <node>
-        <Button/>
+        <Button />
         <grid class="3x1">
-          <Icon src={props.icon_src}/>
+          <Icon src={props.icon_src} />
           <grid class="1x4" span={2}>
             <Text
               content={props.title_content}
@@ -54,5 +67,5 @@ export function Card(props: JucaCardProperties, std: GlyStd) {
         </grid>
       </node>
     </item>
-  )
+  );
 }

@@ -27,15 +27,11 @@ export function Icon(props: JucaIconProperties, std: GlyStd) {
   const getY = typeof y_pos !== "function" ? () => y_pos : y_pos;
 
   return (
-    <item
-      style={props.style}
-      offset={props.offset}
-      span={props.span ?? 1}
-    >
+    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
       <node
         draw={(self: GlyApp["data"]) => {
           const srcPath = getSrc();
-          
+
           const imgWidth = std.image.mensure_width(getSrc());
           const imgHeight = std.image.mensure_height(getSrc());
 

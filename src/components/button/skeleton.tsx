@@ -10,7 +10,6 @@ export function SkeletonButton(props: SkeletonButtonProperties, std: GlyStd) {
   const y_pos = props.y ?? 0;
   const btn_width = props.width;
   const btn_height = props.height;
-  
 
   const getBorderRadius =
     typeof border_radius !== "function" ? () => border_radius : border_radius;
@@ -30,11 +29,7 @@ export function SkeletonButton(props: SkeletonButtonProperties, std: GlyStd) {
       : undefined;
 
   return (
-    <item
-      style={props.style}
-      offset={props.offset}
-      span={props.span ?? 1}
-    >
+    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
       <node>
         <Button border_width={0} {...props} />
         <node
@@ -56,18 +51,18 @@ export function SkeletonButton(props: SkeletonButtonProperties, std: GlyStd) {
             const travel = btnWidth + scaledBtnWidth;
             const shimmerX = xPos - scaledBtnWidth + travel * wave;
 
-              const shimmerStart = shimmerX;
-              const shimmerEnd = shimmerX + scaledBtnWidth;
-              const clipStart = xPos;
-              const clipEnd = xPos + btnWidth;
-              const drawStart = Math.max(shimmerStart, clipStart);
-              const drawEnd = Math.min(shimmerEnd, clipEnd);
-              const drawWidth = drawEnd - drawStart;
+            const shimmerStart = shimmerX;
+            const shimmerEnd = shimmerX + scaledBtnWidth;
+            const clipStart = xPos;
+            const clipEnd = xPos + btnWidth;
+            const drawStart = Math.max(shimmerStart, clipStart);
+            const drawEnd = Math.min(shimmerEnd, clipEnd);
+            const drawWidth = drawEnd - drawStart;
 
-              if (drawWidth > 0) {
-                std.draw.color(getSecondaryColor());
-                std.draw.rect2(0, drawStart, yPos, drawWidth, btnHeight, radius);
-              }
+            if (drawWidth > 0) {
+              std.draw.color(getSecondaryColor());
+              std.draw.rect2(0, drawStart, yPos, drawWidth, btnHeight, radius);
+            }
           }}
         />
       </node>
