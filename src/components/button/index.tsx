@@ -26,7 +26,7 @@ export type JucaButtonProperties = {
   };
 
 export function Button(props: JucaButtonProperties, std: GlyStd) {
-  const border_width = props.border_width ?? 1;
+  const border_width = props.border_width ?? 0;
   const border_radius = props.border_radius ?? 0;
   const x_pos = props.x ?? 0;
   const y_pos = props.y ?? 0;
