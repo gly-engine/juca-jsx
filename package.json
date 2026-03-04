@@ -20,11 +20,11 @@
     "format": "prettier --check ."
   },
   "dependencies": {
-    "@gamely/gly-cli": "^0.3.10",
-    "@gamely/tstl-import": "0.0.3",
-    "@gamely/acai-jsx": "^0.0.3"
+    "@gamely/tstl-import": "0.0.3"
   },
   "devDependencies": {
+    "@gamely/acai-jsx": "^0.0.4",
+    "@gamely/gly-cli": "^0.3.10",
     "@gamely/gly-jsx": "^0.3.1",
     "@gamely/gly-types": "^0.2.4",
     "@gamely/tstl-console": "^1.0.0",
