@@ -58,13 +58,16 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
           <IconButton style="margin" src="assets/teste.png" />
           <IconButton style="margin" src="assets/teste.png" />
         </grid>
-        <grid class="1x8">
+        <grid class="1x8" style="margin">
           <Card
-            icon_src="assets/teste.png"
+            style="margin"
+            image_src="assets/teste.png"
+            image_position="left"
+            backgroundColor={std.color.black}
             title_content="Video, olá"
             title_align={"left"}
             description_content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
-            description_align={"left"}
+            description_align={"justify"}
           />
         </grid>
       </grid>
