@@ -1,6 +1,6 @@
 import type { GlyStd } from "@gamely/gly-types";
 import { Button, JucaButtonProperties } from "./index";
-import { Icon } from "../icon";
+import { Image } from "../image";
 
 export type IconPosition = "center" | "left" | "right" | "top" | "bottom";
 
@@ -19,7 +19,7 @@ export function IconButton(props: IconButtonProperties, std: GlyStd) {
     <item style={props.style} offset={props.offset} span={props.span ?? 1}>
       <node>
         <Button border_width={0} {...props} />
-        <Icon src={src} position={icon_position} />
+        <Image src={src} position={icon_position} />
       </node>
     </item>
   );

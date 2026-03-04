@@ -1,14 +1,14 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
 
-export type IconPosition = "center" | "left" | "right" | "top" | "bottom";
-export type IconSize = "fill" | "contain" | "cover";
+export type ImagePosition = "center" | "left" | "right" | "top" | "bottom";
+export type ImageSize = "fill" | "contain" | "cover";
 
-export type JucaIconProperties = {
+export type JucaImageProperties = {
   src: string | (() => string);
   x?: number | (() => number);
   y?: number | (() => number);
-  position?: IconPosition;
-  size?: IconSize;
+  position?: ImagePosition;
+  size?: ImageSize;
 } & {
   span?: number;
   offset?: number;
@@ -16,7 +16,7 @@ export type JucaIconProperties = {
   style?: string;
 };
 
-export function Icon(props: JucaIconProperties, std: GlyStd) {
+export function Image(props: JucaImageProperties, std: GlyStd) {
   const src = props.src;
   const x_pos = props.x ?? 0;
   const y_pos = props.y ?? 0;
@@ -35,27 +35,27 @@ export function Icon(props: JucaIconProperties, std: GlyStd) {
           const imgWidth = std.image.mensure_width(getSrc());
           const imgHeight = std.image.mensure_height(getSrc());
 
-          let iconX = getX();
-          let iconY = getY();
+          let ImageX = getX();
+          let ImageY = getY();
 
           if (position === "center") {
-            iconX = (self.width - imgWidth) / 2;
-            iconY = (self.height - imgHeight) / 2;
+            ImageX = (self.width - imgWidth) / 2;
+            ImageY = (self.height - imgHeight) / 2;
           } else if (position === "left") {
-            iconX = 0;
-            iconY = (self.height - imgHeight) / 2;
+            ImageX = 0;
+            ImageY = (self.height - imgHeight) / 2;
           } else if (position === "right") {
-            iconX = self.width - imgWidth;
-            iconY = (self.height - imgHeight) / 2;
+            ImageX = self.width - imgWidth;
+            ImageY = (self.height - imgHeight) / 2;
           } else if (position === "top") {
-            iconX = (self.width - imgWidth) / 2;
-            iconY = 0;
+            ImageX = (self.width - imgWidth) / 2;
+            ImageY = 0;
           } else if (position === "bottom") {
-            iconX = (self.width - imgWidth) / 2;
-            iconY = self.height - imgHeight;
+            ImageX = (self.width - imgWidth) / 2;
+            ImageY = self.height - imgHeight;
           }
 
-          std.image.draw(srcPath, iconX, iconY);
+          std.image.draw(srcPath, ImageX, ImageY);
         }}
       />
     </item>
