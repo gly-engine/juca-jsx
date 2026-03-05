@@ -12,13 +12,15 @@ export type IconButtonProperties = JucaButtonProperties & {
 };
 
 export function IconButton(props: IconButtonProperties, std: GlyStd) {
+  const { style, offset, span, after, ...buttonProps } = props;
+  
   const icon_position = props.icon_position ?? "center";
   const src = props.src;
 
   return (
-    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
+    <item style={style} offset={offset} span={span ?? 1}>
       <node>
-        <Button border_width={0} {...props} />
+        <Button {...buttonProps}/>
         <Image src={src} position={icon_position} />
       </node>
     </item>

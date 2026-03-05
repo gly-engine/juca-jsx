@@ -5,6 +5,8 @@ import { getSecondaryColor } from "../../theme";
 export type SkeletonButtonProperties = JucaButtonProperties;
 
 export function SkeletonButton(props: SkeletonButtonProperties, std: GlyStd) {
+  const { style, offset, span, after, ...buttonProps } = props;
+
   const border_radius = props.border_radius ?? 0;
   const x_pos = props.x ?? 0;
   const y_pos = props.y ?? 0;
@@ -29,9 +31,9 @@ export function SkeletonButton(props: SkeletonButtonProperties, std: GlyStd) {
       : undefined;
 
   return (
-    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
+    <item style={style} offset={offset} span={span ?? 1}>
       <node>
-        <Button border_width={0} {...props} />
+        <Button {...buttonProps} />
         <node
           draw={(self: GlyApp["data"]) => {
             const btnWidth = getWidth ? getWidth() : self.width;

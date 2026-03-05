@@ -5,6 +5,8 @@ import { getPrimaryColor, getDangerColor } from "../../theme";
 export type AnimatedButtonProperties = JucaButtonProperties;
 
 export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
+  const { style, offset, span, after, ...buttonProps } = props;
+
   const border_radius = props.border_radius ?? 0;
   const x_pos = props.x ?? 0;
   const y_pos = props.y ?? 0;
@@ -42,7 +44,7 @@ export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
       : undefined;
 
   return (
-    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
+    <item style={style} offset={offset} span={span ?? 1}>
       <node>
         <node
           draw={(self: GlyApp["data"]) => {
@@ -74,9 +76,21 @@ export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
               animatedHeight,
               radius,
             );
+            const borderWidth = 2;
+            std.draw.color(getBgColor());
+            for (let i = 0; i < borderWidth; i++) {
+              std.draw.rect2(
+                1,
+                animatedX + i,
+                animatedY + i,
+                animatedWidth - i * 2,
+                animatedHeight - i * 2,
+                radius,
+              );
+            }
           }}
         />
-        <Button border_width={0} {...props} />
+        <Button {...buttonProps} />
       </node>
     </item>
   );
