@@ -31,6 +31,7 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
             style="margin"
             offset={2}
             content="teste 1"
+            border_radius={6}
             color={getTextColor}
             on_hover={hover}
           />
@@ -38,19 +39,26 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
             style="margin"
             content="teste 2"
             kind="danger"
+            border_radius={6}
             color={getTextColor}
           />
           <Button
             style="margin"
             content="teste 3"
             kind="danger_tertiary"
+            border_radius={6}
             color={getTextColor}
           />
-          <SkeletonButton style="margin" color={getTextColor} />
+          <SkeletonButton 
+            style="margin"
+            color={getTextColor}
+            border_radius={6}
+          />
           <AnimatedButton
             style="margin"
             kind="tertiary"
             content="teste 4"
+            border_radius={6}
             color={getTextColor}
           />
         </grid>
