@@ -15,15 +15,16 @@ export type JucaButtonProperties = {
   border_width?: number | (() => number);
   border_radius?: number | (() => number);
   on_hover?: boolean | (() => boolean);
+  id?: string;
   x?: number | (() => number);
   y?: number | (() => number);
 } & Partial<Parameters<typeof Text>[0]> & {
-    span?: number;
-    offset?: number;
-    after?: number;
-    style?: string;
-    kind?: "default" | "tertiary" | "danger" | "danger_tertiary";
-  };
+  span?: number;
+  offset?: number;
+  after?: number;
+  style?: string;
+  kind?: "default" | "tertiary" | "danger" | "danger_tertiary";
+};
 
 export function Button(props: JucaButtonProperties, std: GlyStd) {
   const border_width = props.border_width ?? 0;
@@ -82,10 +83,13 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
     getOnHover() ? getPrimaryColor() : baseBorderColor();
 
   return (
-    <item style={props.style} offset={props.offset} span={props.span ?? 1}>
+    <item style={props.style} offset={props.offset} span={props.span ?? 1} after={props.after} id={props.id}>
       <node>
         <node
-          draw={(self: GlyApp["data"]) => {
+          click={() => {
+            std.log.debug(`[Button] CLICKED`);
+          }}
+          draw={function (this: void, self: GlyApp["data"]) {
             const btnWidth = getWidth ? getWidth() : self.width;
             const btnHeight = getHeight ? getHeight() : self.height;
             const radius = getBorderRadius();
@@ -99,15 +103,15 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
             std.draw.rect2(fill, xPos, yPos, btnWidth, btnHeight, radius);
 
             const borderColor = getBorderColor();
-            std.draw.color(borderColor);
-            const bw = getBorderWidth();
+            std.draw.color(std.ui.isFocused() ? std.color.white : borderColor);
+            const bw = std.ui.isFocused() ? 4 : getBorderWidth();
             for (let i = 0; i < bw; i++) {
               std.draw.rect2(
                 1,
-                xPos + i,
-                yPos + i,
-                btnWidth - i * 2,
-                btnHeight - i * 2,
+                xPos - i,
+                yPos - i,
+                btnWidth + i * 2,
+                btnHeight + i * 2,
                 radius,
               );
             }

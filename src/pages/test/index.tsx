@@ -4,7 +4,7 @@ import { changeTheme, getTertiaryColor, getTextColor } from "../../theme/index";
 import { AnimatedButton } from "../../components/button/animated";
 import { SkeletonButton } from "../../components/button/skeleton";
 import { IconButton } from "../../components/button/icon";
-import { Card } from "../../components/card";
+import { LeftIconCard } from "../../components/card/left_icon_card";
 import { createState } from "@gamely/acai-jsx/hooks/index";
 
 const [hover, setHover] = createState(false);
@@ -67,7 +67,7 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
           <IconButton style="margin" src="assets/teste.png" />
         </grid>
         <grid class="1x8" style="margin">
-          <Card
+          <LeftIconCard
             text_style="margin"
             image_src="assets/teste.png"
             image_position="left"

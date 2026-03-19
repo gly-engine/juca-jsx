@@ -18,9 +18,9 @@ export function IconButton(props: IconButtonProperties, std: GlyStd) {
   const src = props.src;
 
   return (
-    <item style={style} offset={offset} span={span ?? 1}>
+    <item style={style} offset={offset} span={span ?? 1} after={after}>
       <node>
-        <Button {...buttonProps}/>
+        <Button {...buttonProps} />
         <Image src={src} position={icon_position} />
       </node>
     </item>
