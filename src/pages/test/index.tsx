@@ -49,7 +49,7 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
             border_radius={6}
             color={getTextColor}
           />
-          <SkeletonButton 
+          <SkeletonButton
             style="margin"
             color={getTextColor}
             border_radius={6}
@@ -68,7 +68,7 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
         </grid>
         <grid class="1x8" style="margin">
           <Card
-            style="margin"
+            text_style="margin"
             image_src="assets/teste.png"
             image_position="left"
             backgroundColor={std.color.black}

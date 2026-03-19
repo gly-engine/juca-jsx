@@ -47,7 +47,7 @@ export function AnimatedButton(props: AnimatedButtonProperties, std: GlyStd) {
     <item style={style} offset={offset} span={span ?? 1}>
       <node>
         <node
-          draw={(self: GlyApp["data"]) => {
+          draw={function (this: void, self: GlyApp["data"]) {
             const btnWidth = getWidth ? getWidth() : self.width;
             const btnHeight = getHeight ? getHeight() : self.height;
             const radius = getBorderRadius();

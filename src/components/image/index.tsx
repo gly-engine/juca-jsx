@@ -1,14 +1,12 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
 
 export type ImagePosition = "center" | "left" | "right" | "top" | "bottom";
-export type ImageSize = "fill" | "contain" | "cover";
 
 export type JucaImageProperties = {
   src: string | (() => string);
   x?: number | (() => number);
   y?: number | (() => number);
   position?: ImagePosition;
-  size?: ImageSize;
 } & {
   span?: number;
   offset?: number;
@@ -29,7 +27,7 @@ export function Image(props: JucaImageProperties, std: GlyStd) {
   return (
     <item style={props.style} offset={props.offset} span={props.span ?? 1}>
       <node
-        draw={(self: GlyApp["data"]) => {
+        draw={function (this: void, self: GlyApp["data"]) {
           const srcPath = getSrc();
 
           const imgWidth = std.image.mensure_width(getSrc());
