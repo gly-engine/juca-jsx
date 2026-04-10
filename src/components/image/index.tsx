@@ -6,7 +6,7 @@ export type JucaImageProperties = {
   src: string | (() => string);
   x?: number | (() => number);
   y?: number | (() => number);
-  position?: ImagePosition;
+  position?: ImagePosition | (() => ImagePosition);
 } & {
   span?: number;
   offset?: number;
@@ -18,11 +18,12 @@ export function Image(props: JucaImageProperties, std: GlyStd) {
   const src = props.src;
   const x_pos = props.x ?? 0;
   const y_pos = props.y ?? 0;
-  const position = props.position ?? "center";
+  const position_prop = props.position ?? "center";
 
   const getSrc = typeof src !== "function" ? () => src : src;
   const getX = typeof x_pos !== "function" ? () => x_pos : x_pos;
   const getY = typeof y_pos !== "function" ? () => y_pos : y_pos;
+  const getPosition = typeof position_prop !== "function" ? () => position_prop : position_prop;
 
   return (
     <item style={props.style} offset={props.offset} span={props.span ?? 1}>
@@ -35,6 +36,8 @@ export function Image(props: JucaImageProperties, std: GlyStd) {
 
           let ImageX = getX();
           let ImageY = getY();
+
+          const position = getPosition();
 
           if (position === "center") {
             ImageX = (self.width - imgWidth) / 2;

@@ -14,7 +14,8 @@ export type JucaButtonProperties = {
   border_color?: number | (() => number);
   border_width?: number | (() => number);
   border_radius?: number | (() => number);
-  on_hover?: boolean | (() => boolean);
+  on_hover?: () => void;
+  click?: () => void;
   id?: string;
   x?: number | (() => number);
   y?: number | (() => number);
@@ -35,7 +36,6 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
   const btn_height = props.height;
   const content = props.content ?? "";
   const kind = props.kind ?? "default";
-  const on_hover = props.on_hover ?? false;
 
   let bg_color = props.background_color ?? getPrimaryColor;
   let border_color = props.border_color ?? getContrastColor;
@@ -69,7 +69,6 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
         ? () => btn_height
         : btn_height
       : undefined;
-  const getOnHover = typeof on_hover !== "function" ? () => on_hover : on_hover;
 
   const baseBgColor: () => number =
     typeof bg_color === "function" ? bg_color : () => bg_color;
@@ -77,18 +76,16 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
   const baseBorderColor: () => number =
     typeof border_color === "function" ? border_color : () => border_color;
 
-  const getBgColor = () => (getOnHover() ? getSecondaryColor() : baseBgColor());
+  const getBgColor = () => (baseBgColor());
 
-  const getBorderColor = () =>
-    getOnHover() ? getPrimaryColor() : baseBorderColor();
+  const getBorderColor = () => baseBorderColor();
 
   return (
     <item style={props.style} offset={props.offset} span={props.span ?? 1} after={props.after} id={props.id}>
       <node>
         <node
-          click={() => {
-            std.log.debug(`[Button] CLICKED`);
-          }}
+          click={props.click}
+          focus={props.on_hover}
           draw={function (this: void, self: GlyApp["data"]) {
             const btnWidth = getWidth ? getWidth() : self.width;
             const btnHeight = getHeight ? getHeight() : self.height;

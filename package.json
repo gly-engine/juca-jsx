@@ -24,9 +24,7 @@
   },
   "devDependencies": {
     "@gamely/acai-jsx": "^0.0.4",
-    "@gamely/gly-cli": "^0.3.10",
-    "@gamely/gly-jsx": "^0.3.1",
-    "@gamely/gly-types": "^0.2.4",
+    "@gamely/gly-cli": "github:gly-engine/gly-engine#d0f03cc21f8aec76ad44c3b760f36a8668109689",
     "@gamely/tstl-console": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",

@@ -8,7 +8,7 @@ type TextBlockProperties = Parameters<typeof TextBlock>[0];
 type RectProperties = Parameters<typeof Rect>[0];
 type ImageProperties = Parameters<typeof Image>[0];
 
-export type JucaLeftIconCardProperties = {
+export type JucaCardProperties = {
   span?: number;
   offset?: number;
   after?: number;
@@ -36,7 +36,7 @@ export type JucaLeftIconCardProperties = {
     radius?: RectProperties["radius"];
   };
 
-export function LeftIconCard(props: JucaLeftIconCardProperties, std: GlyStd) {
+export function Card(props: JucaCardProperties, std: GlyStd) {
   const backgroundColor = props.backgroundColor ?? std.color.white;
   const description_content = props.description_content ?? "";
   const title_content = props.title_content ?? "";
