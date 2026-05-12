@@ -4,7 +4,7 @@ import { changeTheme, getTertiaryColor, getTextColor } from "../../theme/index";
 import { AnimatedButton } from "../../components/button/animated";
 import { SkeletonButton } from "../../components/button/skeleton";
 import { IconButton } from "../../components/button/icon";
-import { LeftIconCard } from "../../components/card/left_icon_card";
+import { LeftIconCard } from "../../components/card/index";
 import { createState } from "@gamely/acai-jsx/hooks/index";
 
 const [hover, setHover] = createState(false);
