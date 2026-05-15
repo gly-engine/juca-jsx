@@ -24,7 +24,8 @@ export type JucaButtonProperties = {
   offset?: number;
   after?: number;
   style?: string;
-  kind?: "default" | "tertiary" | "danger" | "danger_tertiary";
+  textStyle?: string;
+  kind?: "ghost" | "default" | "tertiary" | "danger" | "danger_tertiary";
 };
 
 export function Button(props: JucaButtonProperties, std: GlyStd) {
@@ -96,25 +97,41 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
             const yPos =
               props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
 
-            std.draw.color(getBgColor());
-            std.draw.rect2(fill, xPos, yPos, btnWidth, btnHeight, radius);
+            if (kind !== "ghost") {
+              std.draw.color(getBgColor());
+              std.draw.rect2(fill, xPos, yPos, btnWidth, btnHeight, radius);
 
-            const borderColor = getBorderColor();
-            std.draw.color(std.ui.isFocused() ? std.color.white : borderColor);
-            const bw = std.ui.isFocused() ? 4 : getBorderWidth();
-            for (let i = 0; i < bw; i++) {
-              std.draw.rect2(
-                1,
-                xPos - i,
-                yPos - i,
-                btnWidth + i * 2,
-                btnHeight + i * 2,
-                radius,
-              );
+              const borderColor = getBorderColor();
+              std.draw.color(std.ui.isFocused() ? std.color.white : borderColor);
+              const bw = std.ui.isFocused() ? 4 : getBorderWidth();
+              for (let i = 0; i < bw; i++) {
+                std.draw.rect2(
+                  1,
+                  xPos - i,
+                  yPos - i,
+                  btnWidth + i * 2,
+                  btnHeight + i * 2,
+                  radius,
+                );
+              }
+            } else if (std.ui.isFocused()) {
+              std.draw.color(std.color.white);
+              const bw = 4;
+              for (let i = 0; i < bw; i++) {
+                std.draw.rect2(
+                  1,
+                  xPos - i,
+                  yPos - i,
+                  btnWidth + i * 2,
+                  btnHeight + i * 2,
+                  radius,
+                );
+              }
             }
           }}
         />
         <Text
+          style={props.textStyle}
           content={content}
           color={props.color}
           font_size={props.font_size}
