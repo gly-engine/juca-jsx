@@ -9,28 +9,30 @@
   },
   "bugs": "https://github.com/gly-engine/juca-jsx/issues",
   "scripts": {
-    "prebuild": "tstl --declaration",
-    "build": "gly-cli build-ginga --enterprise --target ncl --cwd dist index.lua --bundler --outdir build/dist --non-relative && cp -r assets build/dist/",
+    "prebuild:index": "npm run build",
+    "prebuild:sample": "npm run build",
+    "build": "tstl --declaration",
+    "build:index": "gly-cli build-ginga --enterprise --target ncl --cwd dist src/index.lua --bundler --outdir build/dist --non-relative && cp -r assets build/dist/",
     "postbuild": "cp README.md package.json tsconfig.json .npmignore dist",
-    "build:html": "npm run build",
-    "postbuild:html": "gly-cli build-html build/dist/game.lua --outdir build/html --aa --enginecdn --fengari --screen 1280x720",
+    "build:sample": "gly-cli build-html --screen 1920x1080 --cwd dist src/page.lua --outdir build/dist",
     "lint:fix": "eslint . --fix",
     "lint": "eslint .",
     "format:fix": "prettier --write .",
     "format": "prettier --check ."
   },
   "dependencies": {
+    "@typescript-to-lua/language-extensions": "^1.19.0",
     "@gamely/tstl-import": "0.0.3"
   },
   "devDependencies": {
-    "@gamely/acai-jsx": "^0.0.4",
+    "@gamely/acai-jsx": "0.0.4",
     "@gamely/gly-cli": "github:gly-engine/gly-engine#5f24f8181ff8dbe4d5d1f069de999bb8538377b5",
-    "@gamely/tstl-console": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
     "eslint": "^9.33.0",
     "typescript-eslint": "^8.39.1",
-    "typescript-to-lua": "^1.31.2",
+    "fengari": "github:fengari-lua/fengari#6a8908380a9b5fc3a8f0fe1e9c1b79ce5dba9312",
+    "typescript-to-lua": "1.31.2",
     "prettier": "^3.6.2"
   }
 }

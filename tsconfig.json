@@ -3,34 +3,26 @@
   "include": ["src"],
   "compilerOptions": {
     "lib": ["es2022"],
-    "outDir": "build",
+    "outDir": "dist",
+    "rootDir": ".",
     "jsx": "react",
     "jsxFactory": "std.h",
-    "jsxFragmentFactory": "std.h",
     "types": [
       "./node_modules/@gamely/gly-cli/npm/gly-jsx/index.d.ts",
-      "@gamely/tstl-console",
-      "node"
+      "@typescript-to-lua/language-extensions"
     ],
     "baseUrl": ".",
     "paths": {
       "@gamely/gly-types": ["./node_modules/@gamely/gly-cli/npm/gly-types/index.d.ts"]
     },
-    "resolveJsonModule": true,
-    "skipLibCheck": true
+    "strict": true
   },
   "tstl": {
     "buildMode": "library",
     "luaTarget": "universal",
-    "luaLibImport": "inline",
+    "luaLibImport": "require-minimal",
     "noImplicitGlobalVariables": true,
     "noImplicitSelf": true,
     "noHeader": true,
-    "luaPlugins": [
-      { "name": "@gamely/tstl-console/gly" },
-      { "name": "@gamely/tstl-json-gly" },
-      { "name": "@gamely/tstl-number" },
-      { "name": "@gamely/tstl-import" }
-    ]
   }
 }
