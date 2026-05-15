@@ -1,4 +1,5 @@
 import { GlyStd } from "@gamely/gly-types";
+import { TestPage } from "./pages/test/index";
 import { initTheme } from "./theme/index";
 
 export const meta = {
@@ -17,10 +18,11 @@ export const config = {
 // getBackgroundPrimary
 function load(props: never, std: GlyStd) {
   initTheme(std);
+  std.node.spawn(std.node.load(TestPage({}, std)));
 }
 
 function error(_: never, std: GlyStd, msg: string) {
-  console.error(msg);
+  std.log.error(msg);
   return true;
 }
 

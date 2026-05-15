@@ -84,8 +84,8 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
     <item style={props.style} offset={props.offset} span={props.span ?? 1} after={props.after} id={props.id}>
       <node>
         <node
-          click={props.click}
-          focus={props.on_hover}
+          click={props.click as Function}
+          focus={props.on_hover as Function}
           draw={function (this: void, self: GlyApp["data"]) {
             const btnWidth = getWidth ? getWidth() : self.width;
             const btnHeight = getHeight ? getHeight() : self.height;

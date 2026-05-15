@@ -66,7 +66,9 @@ export function initTheme(std: GlyStd) {
     },
   };
 
-  [getTheme, setTheme] = createState<Theme>(themes.purple);
+  const [get, set] = createState<Theme>(themes.purple);
+  getTheme = () => get();
+  setTheme = (theme) => set(theme);
 }
 
 export function changeTheme(name: ThemeName) {

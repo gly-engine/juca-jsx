@@ -36,7 +36,7 @@ export type JucaCardProperties = {
     radius?: RectProperties["radius"];
   };
 
-export function LeftIconCard(props: JucaCardProperties, std: GlyStd) {
+export function Card(props: JucaCardProperties, std: GlyStd) {
   const backgroundColor = props.backgroundColor ?? std.color.white;
   const description_content = props.description_content ?? "";
   const title_content = props.title_content ?? "";
