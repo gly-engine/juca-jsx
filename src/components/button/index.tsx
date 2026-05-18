@@ -25,7 +25,7 @@ export type JucaButtonProperties = {
   after?: number;
   style?: string;
   textStyle?: string;
-  kind?: "ghost" | "default" | "tertiary" | "danger" | "danger_tertiary";
+  kind?: "ghost" | "default" | "tertiary" | "danger" | "danger_tertiary" | (() => "ghost" | "default" | "tertiary" | "danger" | "danger_tertiary");
 };
 
 export function Button(props: JucaButtonProperties, std: GlyStd) {
@@ -38,17 +38,19 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
   const content = props.content ?? "";
   const kind = props.kind ?? "default";
 
+  const getKind = typeof kind === "function" ? kind : () => kind;
+
   let bg_color = props.background_color ?? getPrimaryColor;
   let border_color = props.border_color ?? getContrastColor;
   let fill = 0;
 
-  if (kind === "danger" || kind === "danger_tertiary") {
+  if (getKind() === "danger" || getKind() === "danger_tertiary") {
     bg_color = getDangerColor;
     border_color = getDangerColor;
     props.color = std.color.white;
   }
 
-  if (kind === "tertiary" || kind === "danger_tertiary") {
+  if (getKind() === "tertiary" || getKind() === "danger_tertiary") {
     fill = 1;
   }
 
@@ -97,7 +99,7 @@ export function Button(props: JucaButtonProperties, std: GlyStd) {
             const yPos =
               props.y !== undefined ? getY() : (self.height - btnHeight) / 2;
 
-            if (kind !== "ghost") {
+            if (getKind() !== "ghost") {
               std.draw.color(getBgColor());
               std.draw.rect2(fill, xPos, yPos, btnWidth, btnHeight, radius);
 
