@@ -44,6 +44,10 @@ export function Keyboard(props: KeyboardProps, std: GlyStd) {
 
     const displayText = () => showSecret ? text() : "*".repeat(text().length);
 
+    <style class="keyboard-row" left={30} right={30} top={8} bottom={8} />;
+    <style class="keyboard-field" left={30} right={30} top={10} bottom={10} />;
+    <style class="key" left={8} right={8} />;
+
     return (
         <item style={props.style} span={props.span} offset={props.offset} after={props.after}>
             <node>

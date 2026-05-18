@@ -7,6 +7,7 @@ import { IconButton } from "../../components/button/icon";
 import { Card } from "../../components/card/index";
 import { createState } from "@gamely/acai-jsx/hooks/index";
 import { Keyboard } from "src/components/keyboard/keyboard";
+import { LargeKeyboard } from "src/components/keyboard/LargeKeyboard";
 
 const [hover, setHover] = createState(false);
 
@@ -38,7 +39,7 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
           std.draw.clear(getTertiaryColor());
         }}
       />
-      <grid class="3x1">
+      <grid class="4x1">
         <grid class="1x8">
           <Button
             style="margin"
@@ -84,7 +85,7 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
           <IconButton style="margin" src="assets/teste.png" />
           <IconButton style="margin" src="assets/teste.png" />
         </grid>
-        <grid class="1x8" style="margin">
+        <grid class="1x8" style="margin" span={2}>
           <Card
             text_style="margin"
             image_src="assets/teste.png"
@@ -95,7 +96,7 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
             description_content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
             description_align={"justify"}
           />
-          <Keyboard span={4} />
+          <LargeKeyboard span={4} />
           <Button
             style="margin"
             content="teste 5"
