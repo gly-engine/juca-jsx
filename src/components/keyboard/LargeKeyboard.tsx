@@ -114,7 +114,7 @@ export function LargeKeyboard(props: KeyboardProps, std: GlyStd) {
                     <grid class="3x1" style="keyboard-row" span={2}>
                         <Button click={() => { setText((text) => text + " "); }} style="key" content="SPACE" align={"center"} font_size={font_size} color={std.color.white} background_color={0x3d3d3dff} border_radius={8} />
                         <Button click={() => { setText(""); }} style="key" content="CLEAR" align={"center"} font_size={font_size} color={std.color.white} background_color={0x3d3d3dff} border_radius={8} />
-                        <Button click={props.onEnter} style="key" content="ENTER" align={"center"} font_size={font_size} color={std.color.white} background_color={0x3d3d3dff} border_radius={8} />
+                        <Button click={props.onEnter ?? (() => {})} style="key" content="ENTER" align={"center"} font_size={font_size} color={std.color.white} background_color={0x3d3d3dff} border_radius={8} />
                     </grid>
                 </grid>
             </node>
