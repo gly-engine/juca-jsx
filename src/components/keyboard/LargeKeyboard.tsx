@@ -19,15 +19,15 @@ const UPPERKEYBOARD = [
 const SYMBOLKEYBOARD = [
     ["1", "2", "3", "4", "5", "6", "7", "8", "9", "Apagar"],
     ["(", ")", "*", "-", "+", "=", "#", "$", "0", "%", "ABC"],
-    ["\"", ":", ";", "!", "?", "-", "'", "=", "/", "\\", ""],
+    ["\"", ":", ";", "!", "?", "-", "'", "=", "/", "@", ""],
 ];
 
-const [text, setText] = createState("");
+export const [textKeyboard, setText] = createState("");
 const [keyboard, setKeyboard] = createState(LOWERKEYBOARD);
 
 export type KeyboardProps = {
     onEnter?: JucaButtonProperties["click"];
-    showSecret?: boolean;
+    showSecret?: boolean | (() => boolean);
 } & {
     span?: number;
     offset?: number;
@@ -39,7 +39,8 @@ export function LargeKeyboard(props: KeyboardProps, std: GlyStd) {
     let font_size = 32;
     const showSecret = props.showSecret ?? true;
 
-    const displayText = () => showSecret ? text() : "*".repeat(text().length);
+    const getSecret = typeof showSecret === "function" ? showSecret : () => showSecret;
+    const displayText = () => getSecret() ? textKeyboard() : "*".repeat(textKeyboard().length);
 
     <style class="keyboard-row" left={30} right={30} top={8} bottom={8} />;
     <style class="keyboard-field" left={30} right={30} top={10} bottom={10} />;
@@ -55,10 +56,10 @@ export function LargeKeyboard(props: KeyboardProps, std: GlyStd) {
                 />
                 <Rect backgroundColor={std.color.black} />
                 <grid class="1x10">
-                    <item style="keyboard-field" after={1}>
+                    <item style="keyboard-field" span={2}>
                         <node>
                             <Rect backgroundColor={std.color.black} borderColor={std.color.white} />
-                            <Text content={displayText()} align={"center"} font_size={font_size} color={std.color.white} />
+                            <Text content={displayText} align={"center"} font_size={font_size} color={std.color.white} />
                         </node>
                     </item>
                     <grid class="11x1" span={2} style="keyboard-row">

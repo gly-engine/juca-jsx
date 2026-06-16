@@ -21,16 +21,16 @@ const LOWERKEYBOARD = [
 const SYMBOLKEYBOARD = [
     ["1", "4", "7", "(", ")", "_", "@", "Apagar"],
     ["2", "5", "8", "0", "#", "$", "%", "ABC"],
-    ["3", "6", "9", "+", "=", "/", "\\", ""],
+    ["3", "6", "9", "+", "=", "/", "@", ""],
     ["\"", ":", ";", "!", "?", "-", "'", ""],
 ];
 
-const [text, setText] = createState("");
+export const [textKeyboard, setText] = createState("");
 const [keyboard, setKeyboard] = createState(LOWERKEYBOARD);
 
 export type KeyboardProps = {
     onEnter?: JucaButtonProperties["click"];
-    showSecret?: boolean;
+    showSecret?: boolean | (() => boolean);
 } & {
     span?: number;
     offset?: number;
@@ -42,7 +42,8 @@ export function Keyboard(props: KeyboardProps, std: GlyStd) {
     let font_size = 32;
     const showSecret = props.showSecret ?? true;
 
-    const displayText = () => showSecret ? text() : "*".repeat(text().length);
+    const getSecret = typeof showSecret === "function" ? showSecret : () => showSecret;
+    const displayText = () => getSecret() ? textKeyboard() : "*".repeat(textKeyboard().length);
 
     <style class="keyboard-row" left={30} right={30} top={8} bottom={8} />;
     <style class="keyboard-field" left={30} right={30} top={10} bottom={10} />;

@@ -21,25 +21,13 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
           if (std.key.press.a) {
             changeTheme("dark");
           }
-          if (std.key.press.left) {
-            std.ui.focus('left')
-          }
-          if (std.key.press.right) {
-            std.ui.focus('right')
-          }
-          if (std.key.press.up) {
-            std.ui.focus('up')
-          }
-          if (std.key.press.down) {
-            std.ui.focus('down')
-          }
           setHover(true);
         }}
         draw={() => {
           std.draw.clear(getTertiaryColor());
         }}
       />
-      <grid class="4x1">
+      <grid class="3x1">
         <grid class="1x8">
           <Button
             style="margin"
@@ -56,7 +44,6 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
             kind="danger"
             border_radius={6}
             color={getTextColor}
-            click={() => {}}
           />
           <Button
             style="margin"
@@ -64,13 +51,11 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
             kind="danger_tertiary"
             border_radius={6}
             color={getTextColor}
-            click={() => {}}
           />
           <SkeletonButton
             style="margin"
             color={getTextColor}
             border_radius={6}
-            click={() => {}}
           />
           <AnimatedButton
             style="margin"
@@ -78,15 +63,15 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
             content="teste 4"
             border_radius={6}
             color={getTextColor}
-            click={() => {}}
           />
         </grid>
         <grid class="1x2">
           <IconButton style="margin" src="assets/teste.png" />
           <IconButton style="margin" src="assets/teste.png" />
         </grid>
-        <grid class="1x8" style="margin" span={2}>
+        <grid class="1x8" style="margin">
           <Card
+            card_style="margin"
             text_style="margin"
             image_src="assets/teste.png"
             image_position="left"
@@ -95,15 +80,6 @@ export function TestPage(props: any, std: GlyStd): JSX.Element {
             title_align={"left"}
             description_content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
             description_align={"justify"}
-          />
-          <LargeKeyboard span={4} />
-          <Button
-            style="margin"
-            content="teste 5"
-            kind="ghost"
-            border_radius={6}
-            color={getTextColor}
-            click={() => {}}
           />
         </grid>
       </grid>
