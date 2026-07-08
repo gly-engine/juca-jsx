@@ -5,7 +5,7 @@ import { AnimatedButton } from "../../components/button/animated";
 import { SkeletonButton } from "../../components/button/skeleton";
 import { IconButton } from "../../components/button/icon";
 import { Card } from "../../components/card/index";
-import { createState } from "@gamely/acai-jsx/hooks/index";
+import { Rect, Text, createState } from "node_modules/@gamely/acai-jsx/src";
 import { Keyboard } from "src/components/keyboard/keyboard";
 import { LargeKeyboard } from "src/components/keyboard/LargeKeyboard";
 

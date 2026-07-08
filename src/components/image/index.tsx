@@ -24,6 +24,7 @@ export function Image(props: JucaImageProperties, std: GlyStd) {
   const getX = typeof x_pos !== "function" ? () => x_pos : x_pos;
   const getY = typeof y_pos !== "function" ? () => y_pos : y_pos;
   const getPosition = typeof position_prop !== "function" ? () => position_prop : position_prop;
+  const measureImage = std.image.mensure as (src: string) => LuaMultiReturn<[number, number]>;
 
   return (
     <item style={props.style} offset={props.offset} span={props.span ?? 1}>
@@ -31,8 +32,7 @@ export function Image(props: JucaImageProperties, std: GlyStd) {
         draw={function (this: void, self: GlyApp["data"]) {
           const srcPath = getSrc();
 
-          const imgWidth = std.image.mensure_width(getSrc());
-          const imgHeight = std.image.mensure_height(getSrc());
+          const [imgWidth, imgHeight] = measureImage(srcPath);
 
           let ImageX = getX();
           let ImageY = getY();

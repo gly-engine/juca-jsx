@@ -1,7 +1,5 @@
-import { Rect } from "@gamely/acai-jsx/basics/index";
+import { Rect, Text, createState } from "node_modules/@gamely/acai-jsx/src";
 import { GlyApp, GlyStd } from "@gamely/gly-types";
-import { Text } from "@gamely/acai-jsx/basics/text";
-import { createState } from "@gamely/acai-jsx/hooks";
 import { Button, JucaButtonProperties } from "../button";
 
 const UPPERKEYBOARD = [

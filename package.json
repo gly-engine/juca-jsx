@@ -25,14 +25,14 @@
     "@gamely/tstl-import": "0.0.3"
   },
   "devDependencies": {
-    "@gamely/acai-jsx": "0.0.4",
-    "@gamely/gly-cli": "github:gly-engine/gly-engine#5f24f8181ff8dbe4d5d1f069de999bb8538377b5",
+    "@gamely/acai-jsx": "github:gly-engine/acai-jsx#7b50b6351ce720c25a9407a47b6f0e4e5dffba74",
+    "@gamely/gly-cli": "github:gly-engine/gly-engine#893565fb7e6ff971b6c71ec5ab2c459b54d9abb3",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
     "eslint": "^9.33.0",
     "typescript-eslint": "^8.39.1",
     "fengari": "github:fengari-lua/fengari#6a8908380a9b5fc3a8f0fe1e9c1b79ce5dba9312",
-    "typescript-to-lua": "1.31.2",
+    "typescript-to-lua": "^1.36.0",
     "prettier": "^3.6.2"
   }
 }

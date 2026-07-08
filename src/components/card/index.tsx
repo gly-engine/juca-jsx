@@ -1,7 +1,6 @@
 import { GlyStd } from "@gamely/gly-types";
 import { Image } from "../image";
-import { Text, TextBlock } from "@gamely/acai-jsx/basics/text";
-import { Rect } from "@gamely/acai-jsx/basics/index";
+import { Rect, Text, TextBlock } from "node_modules/@gamely/acai-jsx/src";
 
 type TextProperties = Parameters<typeof Text>[0];
 type TextBlockProperties = Parameters<typeof TextBlock>[0];

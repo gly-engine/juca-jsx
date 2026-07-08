@@ -1,5 +1,5 @@
 import type { GlyStd, GlyApp } from "@gamely/gly-types";
-import { Text } from "@gamely/acai-jsx/basics/text";
+import { Text } from "node_modules/@gamely/acai-jsx/src";
 import {
   getContrastColor,
   getDangerColor,
